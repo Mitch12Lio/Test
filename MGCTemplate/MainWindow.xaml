@@ -1,0 +1,136 @@
+﻿<Window x:Class="MGCTemplate.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:MGCTemplateControls="clr-namespace:MGCTemplate.Controls"
+        xmlns:SpinnerControl="clr-namespace:MGCTemplate.Controls"
+        xmlns:local="clr-namespace:MGCTemplate"
+        mc:Ignorable="d"
+        Title="Mind Games" Height="650" Width="800"
+        SizeToContent="Height">
+    <DockPanel LastChildFill="True">
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_File">
+                <MenuItem Header="_Open" Command="{Binding Master.OpenMenuItemCommand}" />
+                <MenuItem Header="_Close" Command="{Binding Master.CloseMenuItemCommand}" />
+                <MenuItem Header="_Save" Command="{Binding Master.SaveMenuItemCommand}" />
+            </MenuItem>
+            <MenuItem Header="_Edit">
+                <MenuItem Header="_Cut" Command="{Binding Master.CutMenuItemCommand}" />
+                <MenuItem Header="_Copy" Command="{Binding Master.CopyMenuItemCommand}" />
+                <MenuItem Header="_Paste" Command="{Binding Master.PasteMenuItemCommand}" />
+            </MenuItem>
+        </Menu>
+        <GroupBox BorderThickness="3" DockPanel.Dock="Top">
+            <GroupBox.Header>
+                <Span FontWeight="DemiBold">Global</Span>
+            </GroupBox.Header>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Content="Year"></Label>
+                <ComboBox Grid.Row="1" Grid.Column="0" ItemsSource="{Binding Master.SetupViewModel.Years}" DisplayMemberPath="Year" SelectedValuePath="Id" SelectedItem="{Binding Master.SetupViewModel.SelectedYear}"></ComboBox>
+                <Label Grid.Row="2" Grid.Column="0" Content="{Binding Master.SetupViewModel.SelectedYear.Year}"></Label>
+                <Rectangle Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" VerticalAlignment="Stretch" Width="1" Margin="2" Stroke="Black" />
+                <Label Grid.Row="0" Grid.Column="2" Content="Event"></Label>
+                <ComboBox Grid.Row="1" Grid.Column="2"></ComboBox>
+                <Rectangle Grid.Row="0" Grid.Column="3" Grid.RowSpan="2" VerticalAlignment="Stretch" Width="1" Margin="2" Stroke="Black" />
+                <Label Grid.Row="0" Grid.Column="4" Content="Teams"></Label>
+                <ComboBox Grid.Row="1" Grid.Column="4"></ComboBox>
+            </Grid>
+        </GroupBox>
+        <StatusBar DockPanel.Dock="Bottom">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+            </Grid>
+            <Label Grid.Row="0" Grid.Column="0" Content="Status:"></Label>
+            <Label Grid.Row="0" Grid.Column="1" Content="{Binding Master.StatusMessage}"></Label>
+            <Label Grid.Row="0" Grid.Column="1" Content="{Binding Master.RacViewModel.HiddenClue}"></Label>
+        </StatusBar>
+        <TabControl>
+            <TabItem Header="Reverse Alphabet">
+                <StackPanel>
+                    <MGCTemplateControls:ReverseAlphabetCtrl></MGCTemplateControls:ReverseAlphabetCtrl>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Grid Alphabet">
+                <DockPanel>                    
+                    <DataGrid DockPanel.Dock="Right" ItemsSource="{Binding Master.GridAlphabeteDT}"></DataGrid>
+                    <StackPanel>
+                    <TextBox Text="{Binding Master.GridAlphabetWord,UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                    <Label Content="{Binding Master.GridAlphabetWordClue}"></Label>
+                        <Button Content="Create Clue" Command="{Binding Master.CreateGridAlphabetClueCommand}"></Button>
+                    </StackPanel>
+                </DockPanel>
+            </TabItem>
+            <TabItem Header="Pig Pen">
+                <StackPanel>
+
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Administrator">
+                <StackPanel>
+                    <MGCTemplateControls:NodeSelectingCtrl></MGCTemplateControls:NodeSelectingCtrl>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" Grid.Column="0" Content="Current Database"></Label>
+                        <TextBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding Master.CurrentDatabase}" IsReadOnly="True"></TextBox>
+                        <Separator Grid.Row="2" Grid.Column="0"></Separator>
+                        <Label Grid.Row="3" Grid.Column="0" Content="Select a different Database"></Label>
+                        <TextBox Grid.Row="4" Grid.Column="0" Text="{Binding Master.CurrentDatabase}" IsReadOnly="True"></TextBox>
+                        <Button Grid.Row="4" Grid.Column="1" Content="Select and Validate Database..." Command="{Binding Master.SetFileCommand}" CommandParameter="SelectDatabasePath"></Button>
+                        <Separator Grid.Row="5" Grid.Column="0"></Separator>
+                        <Label Grid.Row="6" Grid.Column="0" Content="Create and Use a new Database"></Label>
+                        <TextBox Grid.Row="7" Grid.Column="0" Text="{Binding Master.MindGameDatabaseName}"></TextBox>
+                        <Button Grid.Row="7" Grid.Column="1" Content="Invent Name" Command="{Binding Master.InventDatabaseNameCommand}"></Button>
+                        <TextBox Grid.Row="8" Grid.Column="0" Text="{Binding Master.DatabasePath}" IsReadOnly="True"></TextBox>
+                        <Button Grid.Row="8" Grid.Column="1" Content="Select Location" Command="{Binding Master.SetFolderCommand}" CommandParameter="CreateDatabasePath"></Button>
+                        <Button Grid.Row="9" Grid.Column="1" Content="Create" Command="{Binding Master.CreateDBInitCommand}"></Button>
+                    </Grid>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+
+    </DockPanel>
+</Window>

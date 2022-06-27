@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="MGCTemplate.Controls.NodeSelectingCtrl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MGCTemplate.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <GroupBox BorderThickness="3">
+            <GroupBox.Header>
+                <Span FontWeight="DemiBold">Node Selecting</Span>
+            </GroupBox.Header>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Content="Current Database"></Label>
+                <TextBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding Master.NodeSelectingViewModel.CurrentDatabase}" IsReadOnly="True"></TextBox>
+                <Separator Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"></Separator>
+                <Label Grid.Row="3" Grid.Column="0" Content="Select a different Database"></Label>
+                <TextBox Grid.Row="4" Grid.Column="0" Text="{Binding Master.NodeSelectingViewModel.CurrentDatabase}" IsReadOnly="True"></TextBox>
+                <!--<Button Grid.Row="4" Grid.Column="1" Content="Select and Validate Database..." Command="{Binding Master.NodeSelectingViewModel.SetFileCommand}" CommandParameter="SelectDatabasePath"></Button>-->
+                <Button Grid.Row="4" Grid.Column="1" Content="Select and Validate Database..." Command="{Binding Master.SelectDBInitCommand}"></Button>
+                <Separator Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"></Separator>
+                <Label Grid.Row="6" Grid.Column="0" Content="Create and Use a new Database"></Label>
+                <TextBox Grid.Row="7" Grid.Column="0" Text="{Binding Master.NodeSelectingViewModel.MindGameDatabaseName}"></TextBox>
+                <Button Grid.Row="7" Grid.Column="1" Content="Invent Name" Command="{Binding Master.NodeSelectingViewModel.InventDatabaseNameCommand}"></Button>
+                <TextBox Grid.Row="8" Grid.Column="0" Text="{Binding Master.NodeSelectingViewModel.DatabasePath}" IsReadOnly="True"></TextBox>
+                <Button Grid.Row="8" Grid.Column="1" Content="Select Location" Command="{Binding Master.NodeSelectingViewModel.SetFolderCommand}" CommandParameter="CreateDatabasePath"></Button>
+                <Button Grid.Row="9" Grid.Column="1" Content="Create" Command="{Binding Master.CreateDBInitCommand}"></Button>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</UserControl>

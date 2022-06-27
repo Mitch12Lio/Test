@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="MGCTemplate.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="CurrentFolderPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">x:</Value>
+    </Setting>
+    <Setting Name="CurrentFilePath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">d:</Value>
+    </Setting>
+    <Setting Name="CurrentDatabase" Type="System.String" Scope="User">
+      <Value Profile="(Default)">e:</Value>
+    </Setting>
+    <Setting Name="DatabasePath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">eD</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
