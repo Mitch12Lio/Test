@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MGCTemplate", "MGCTemplate\MGCTemplate.csproj", "{972292B7-143E-4B49-A175-B38E48F9A0BF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MGCTest", "MGCTemplate\MGCTest.csproj", "{972292B7-143E-4B49-A175-B38E48F9A0BF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -71,6 +71,24 @@
             <Label Grid.Row="0" Grid.Column="1" Content="{Binding Master.RacViewModel.HiddenClue}"></Label>
         </StatusBar>
         <TabControl>
+            <TabItem Header="Migration">
+                <StackPanel>
+                    <Label Content="1. Read File"></Label>
+                    <Label Content="2. Serialize to JSON"></Label>
+                    <Label Content="3. Read JSON and Create XML"></Label>
+                    <Label Content="4. Copy File to Temp Directory (by encryptio for fun?)"></Label>
+                    <Label Content="5. Copy to Import Directory"></Label>
+                    <Label Content="6. Validate"></Label>
+                    <Separator></Separator>
+                    <Label Content="Select File to Serialize"></Label>
+                    <TextBox></TextBox>
+                    <Button Content="Browse..."></Button>
+                    <Button Content="Execute File to Serialize to JSON"></Button>
+                    <Separator></Separator>
+                    
+                    
+                </StackPanel>
+            </TabItem>
             <TabItem Header="Reverse Alphabet">
                 <StackPanel>
                     <MGCTemplateControls:ReverseAlphabetCtrl></MGCTemplateControls:ReverseAlphabetCtrl>
