@@ -123,6 +123,7 @@
     <Compile Include="Controls\ReverseAlphabetCtrl.xaml.cs">
       <DependentUpon>ReverseAlphabetCtrl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pocos\SDEntity.cs" />
     <Compile Include="ViewModels\Master.cs" />
     <Compile Include="ViewModels\mvvmHandlers.cs" />
     <Compile Include="ViewModels\Clues\ReverseAlphabetViewModel.cs" />

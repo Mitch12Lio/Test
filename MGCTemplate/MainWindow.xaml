@@ -83,7 +83,7 @@
                     <Label Content="Select File to Serialize"></Label>
                     <TextBox></TextBox>
                     <Button Content="Browse..."></Button>
-                    <Button Content="Execute File to Serialize to JSON"></Button>
+                    <Button Content="Execute File to Serialize to JSON" Command="{Binding Master.DisectFileCommand}"></Button>
                     <Separator></Separator>
                     
                     

@@ -214,7 +214,7 @@ namespace MGCTemplate.ViewModels
 
         #endregion
 
-       
+
 
         private ICommand createGridAlphabetClueCommand;
         public ICommand CreateGridAlphabetClueCommand
@@ -249,7 +249,7 @@ namespace MGCTemplate.ViewModels
                             }
                         }
                     }
-                    else 
+                    else
                     {
                         GridAlphabetWordClue += chareacter.ToString() + " ";
 
@@ -310,7 +310,7 @@ namespace MGCTemplate.ViewModels
 
         }
 
-       
+
 
         private ICommand selectDBInitCommand;
         public ICommand SelectDBInitCommand
@@ -489,6 +489,63 @@ namespace MGCTemplate.ViewModels
         //}
 
         #endregion //Commands
+
+        private ICommand disectFileCommand;
+        public ICommand DisectFileCommand
+        {
+            get
+            {
+                return disectFileCommand ?? (disectFileCommand = new CommandHandler(() => DisectFile(), _canExecute));
+            }
+        }
+        private void DisectFile()
+        {
+            List<Pocos.SDEntity> sdEntities = new List<Pocos.SDEntity>();
+
+            using (var reader = new System.IO.StreamReader(@"C:\Mitch\ER2Migrate\dataSheet.txt"))
+            {
+                while (!reader.EndOfStream)
+                {
+                    string line = reader.ReadLine();
+                    if (line != string.Empty)
+                    {
+                        string SourceFile = string.Empty;
+                        string SourceFolder = @"C:\Mitch\ER2Migrate\";
+                        bool CopyAllFiles = false;
+                        string GCDocsLanding = @"Enterprise:8. First Nations and Inuit Health (FNIHB) - Shares:M Drive:PHCPH:";
+
+                        int ERIndex = line.IndexOf("Environmental Research");
+                        string LandingDestination = line.Substring(ERIndex);
+                        string LandingDestinationFolder = System.IO.Path.GetDirectoryName(LandingDestination);
+                        string LandingDestinationGCDocsLingo = LandingDestinationFolder.Replace(System.IO.Path.DirectorySeparatorChar, ':');
+                        GCDocsLanding += LandingDestinationGCDocsLingo;
+
+                        if (line.Substring(line.Length - 3) == "*.*")
+                        {
+                            CopyAllFiles = true;
+                        }
+                        else
+                        {
+                            SourceFile = System.IO.Path.GetFileName(line);
+                        }
+
+                        if (line.Substring(0, 1) == ":") 
+                        {
+                            int secondColonIndex = line.IndexOf(":", 1);
+                            SourceFolder += line.Substring(1, secondColonIndex-1);     
+                        }                        
+
+                        Pocos.SDEntity sdEntity = new Pocos.SDEntity { ID = 0, SourceFile = SourceFile, SourcePath = SourceFolder, DestinationGCDocs = GCDocsLanding, CopyAll = CopyAllFiles };
+                        sdEntities.Add(sdEntity);
+                    }
+                }
+
+                foreach (Pocos.SDEntity sdEntity in sdEntities)
+                {
+
+                }
+            }
+        }
 
     }
 }
